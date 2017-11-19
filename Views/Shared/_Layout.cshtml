@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/UIA.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @Html.ActionLink("Profile", "Index", "Users", new { email = User.Identity.Name }, new { @class = "navbar-brand" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Passenger Flight Schedule", "Index", "PassengerFlights", new { area = "" }, new { @class = "navbar-brand" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("Cargo Flight Schedule", "Index", "CargoFlights", new { area = "" }, new { @class = "navbar-brand" })
+                    </li>
+                    <li>
+                        @Html.ActionLink("About", "About", "Login", new { area = "" }, new { @class = "navbar-brand" })
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container body-content">
+        @RenderBody()
+        <div style="font-size:20px;">
+            <center>
+                @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("Logout", "Login", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                        <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
+                    }
+                }
+            </center>
+        </div>
+        <hr />
+        <div class="container body-content text-center">
+            <footer style="background-color : #0A0909;" class="footer">
+                <font color="white">
+                    <p>&copy;Rio Alfiando (TP037179)</p>
+                    <p>Asia Pacific University Technology & Innovation</p>
+                    <p>CT071-3-5-3-DDAC</p>
+                    <p>Designing and Developing Applications on the Cloud</p>
+                </font>
+            </footer>
+        </div>
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        @RenderSection("Scripts", false)
+</body>
+</html>

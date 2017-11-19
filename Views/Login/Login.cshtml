@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/UIA.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/modernizr-2.6.2.js"></script>
+
+    @model OnlineTicket.Models.Extended.Login
+
+    @{
+        ViewBag.Title = "Login";
+    }
+</head>
+<body>
+    <div class="first" style="background-color : #0A0909;">
+        <font color="White" style="font-size:48px;">
+            <center>
+                ONLINE TICKET BOOKING SYSTEM
+                <br />of
+                <br />UKRAINE INTERNATIONAL AIRLINES (UIA)
+            </center>
+        </font>
+    </div>
+
+    <hr />
+
+    <div class="body-content demo">
+        <br /><br /><br />
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4><strong>Login</strong></h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.RememberMe)
+                            @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Login" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+
+        <div style="font-size:20px;">
+            @Html.ActionLink("Sign Up Now !", "Registration", "Users")
+        </div>
+    </div>
+
+    <hr />
+    <div class="container body-content text-center">
+        <footer style="background-color : #0A0909;" class="footer">
+            <font color="white">
+                <p>&copy;Rio Alfiando (TP037179)</p>
+                <p>Asia Pacific University Technology & Innovation</p>
+                <p>CT071-3-5-3-DDAC</p>
+                <p>Designing and Developing Applications on the Cloud</p>
+            </font>
+        </footer>
+    </div>
+
+    @section Scripts{
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    }
+
+</body>
+</html>
